@@ -1,5 +1,5 @@
 ## **Pinterest Similar Data Crawler for Visual Search Tasks**
-Note: I have used the git "https://github.com/ataknkcyn/pinterest-crawler" as a base code and then channged it for similar data crawling target. 
+Note: I have used the git "https://github.com/ataknkcyn/pinterest-crawler" as a base code and then changed it for similar data crawling target. 
 
 ## Requirements
  - Python 3+
