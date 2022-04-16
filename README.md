@@ -1,4 +1,4 @@
-## **Pinterest Image Download by Keywords**
+## **Pinterest Similar Data Crawler for Image Retrival Tasks**
 You can download as many images as you want about the searched words.
 
 ## Requirements
