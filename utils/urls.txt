@@ -1,0 +1,3 @@
+pinterest sample visual search api : https://www.pinterest.com/resource/VisualLiveSearchResource/get/?source_url=/pin/42854633942020583/visual-search/&data={"options":{"isPrefetch":false,"pin_id":"42854633942020583","crop_source":5,"no_fetch_context_on_resource":false},"context":{}}
+
+https://github.com/mirusu400/Pinterest-infinite-crawler
