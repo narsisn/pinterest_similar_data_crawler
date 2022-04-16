@@ -1,22 +1,31 @@
-## **Pinterest Similar Data Crawler for Image Retrival Tasks**
-You can download as many images as you want about the searched words.
+## **Pinterest Similar Data Crawler for Visual Search Tasks**
+Note: I have used the git "https://github.com/ataknkcyn/pinterest-crawler" as a base code and then channged it for similar data crawling target. 
 
 ## Requirements
-
  - Python 3+
-- Python "requests" library (```pip install requests```)
-## How to Run
 
+## Phase 1: Extracting Target Pins 
+
+Run :
+python3 pin_crawler.py
+
+input: 
+
+output: 
+
+## Phase 2: Downloading the Similar Images
 
 ```python
 from src import PinterestScraper, PinterestConfig
 
-configs = PinterestConfig(search_keywords="Atatürk", # Search word
-                          file_lengths=200,     # total number of images to download (default = "100")
-                          image_quality="orig", # image quality (default = "orig")
-                          bookmarks="")         # next page data (default= "")
+configs = PinterestConfig(search_keywords=keys, # Search word
+                            file_lengths=200,     # total number of images to download (default = "100")
+                            image_quality="orig", # image quality (default = "orig")
+                            bookmarks="",
+                            )         # next page data (default= "")
 
-PinterestScraper(configs).download_images() # download images directly (photos/atatürk, photos/web-scraping)
-
-print(PinterestScraper(configs).get_urls()) # get image links
+    
+pinList = PinterestScraper(configs).get_pins()
+# save in csv file
+PinterestScraper(configs).save_pin_csv(pinList, pc,mc,ge)
 ```
