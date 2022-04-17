@@ -26,6 +26,7 @@ class Scraper:
         # craete directoryPath if not exsit 
         Path(imagePath).mkdir(parents=True, exist_ok=True)
         number = 1
+        imgList = []
         # prev get links
         results = self.get_urls()
         a = 1
@@ -43,6 +44,21 @@ class Scraper:
                 number = number + 1
             except Exception as e:
                 print(e)
+            imgList.append(fileName)
+        imgDF = pd.DataFrame()
+        imgDF['pin']=[str(self.config.search_pin)]
+        imgDF['product_category']=[pc]
+        imgDF['main_category']=[mc]
+        imgDF['gender']=[ge]
+        imgDF['image_path']=[imagePath]
+        print(imgDF)
+        imgDF['image_list']=[imgList]
+        if exists('csv_files/similar_images.csv'):
+            imgDF.to_csv('csv_files/similar_images.csv', mode='a', index=False, header=False)
+        else:
+            imgDF.to_csv('csv_files/similar_images.csv', mode='a', index=False, header=True)
+            
+
 
     # get_urls return array
     def get_urls(self):
