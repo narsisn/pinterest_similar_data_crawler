@@ -45,16 +45,19 @@ class Scraper:
         SOURCE_URL = self.config.source_url,
         DATA = self.config.image_data,
         URL_CONSTANT = self.config.search_url
+        print(SOURCE_URL)
+        print(DATA)
         r = requests.get(URL_CONSTANT, params={
                          "source_url": SOURCE_URL, "data": DATA})
         jsonData = json.loads(r.content)
         resource_response = jsonData["resource_response"]
         data = resource_response["data"]
         results = data["results"]
+        
         for i in results:
             self.image_urls.append(
                 i["images"][self.config.image_quality]["url"])
-
+    
         if len(self.image_urls) < int(self.config.file_length):
             self.config.bookmarks = resource_response["bookmark"]
             # print(self.image_urls)
@@ -68,7 +71,6 @@ class Scraper:
         SOURCE_URL = self.config.source_url,
         DATA = self.config.image_data,
         URL_CONSTANT = self.config.search_url
-        print(SOURCE_URL)
         r = requests.get(URL_CONSTANT, params={
                          "source_url": SOURCE_URL, "data": DATA})
         jsonData = json.loads(r.content)

@@ -19,7 +19,7 @@ python3 similar_downloader.py
 
 Input: pin.csv
 
-Output: images directory including Downloded Images and similar_images.csv file that contains iamges metadata. 
+Output: images directory including downloded images and similar_images.csv file that contains iamges metadata. 
 File path : /csv_files/similar_images.csv  
 
 
@@ -33,7 +33,6 @@ configs = PinterestConfig(search_keywords=keys, # Search word
                             bookmarks="",
                             )         # next page data (default= "")
 
-    
 pinList = PinterestScraper(configs).get_pins()
 # save in csv file
 ```
