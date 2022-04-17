@@ -9,12 +9,21 @@ Note: I have used the git "https://github.com/ataknkcyn/pinterest-crawler" as a 
 Run :
 python3 pin_crawler.py
 
-input: 
+Input: keywords.csv file that contains the different search key words.  File path: /csv_files/keywords.csv 
 
-output: 
+Output: pin.csv file that contains the pin of target images. File path: /csv_files/pin.csv
 
 ## Phase 2: Downloading the Similar Images
+Run :
+python3 similar_downloader.py  
 
+Input: pin.csv
+
+Output: images directory including Downloded Images and similar_images.csv file that contains iamges metadata. 
+File path : /csv_files/similar_images.csv  
+
+
+Sample Code: 
 ```python
 from src import PinterestScraper, PinterestConfig
 
@@ -27,5 +36,4 @@ configs = PinterestConfig(search_keywords=keys, # Search word
     
 pinList = PinterestScraper(configs).get_pins()
 # save in csv file
-PinterestScraper(configs).save_pin_csv(pinList, pc,mc,ge)
 ```
