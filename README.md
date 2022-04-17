@@ -19,20 +19,31 @@ python3 similar_downloader.py
 
 Input: pin.csv
 
-Output: images directory including downloded images and similar_images.csv file that contains iamges metadata. 
+Output: images directory including downloded images and similar_images.csv file that contains images metadata. 
 File path : /csv_files/similar_images.csv  
 
 
 Sample Code: 
 ```python
-from src import PinterestScraper, PinterestConfig
+from src import PinSimilarScraper, PinSimilarConfig
+import pandas as pd
 
-configs = PinterestConfig(search_keywords=keys, # Search word
-                            file_lengths=200,     # total number of images to download (default = "100")
+# read input file including search pins 
+pinList = pd.read_csv('csv_files/pin.csv')
+counter = 0 
+
+for pin,pc,mc,ge in zip (pinList.pin,pinList.product_category,pinList.main_category,pinList.gender):
+    counter = counter + 1 
+    print ("Counter is =================>", counter,pin,pc,mc,ge )
+ 
+    configs = PinSimilarConfig(search_pin=str(pin), # Search word
+                            file_lengths=50,     # total number of images to download (default = "100")
                             image_quality="orig", # image quality (default = "orig")
                             bookmarks="",
                             )         # next page data (default= "")
 
-pinList = PinterestScraper(configs).get_pins()
-# save in csv file
+    
+
+    pinList = PinSimilarScraper(configs).download_images(pc,mc,ge)
+   
 ```
