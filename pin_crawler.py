@@ -12,7 +12,7 @@ for keys,pc,mc,ge in zip (keywordsList.Keyword,keywordsList.product_category,key
     print ("Counter is =================>", counter,keys,pc,mc,ge )
  
     configs = PinterestConfig(search_keywords=keys, # Search word
-                            file_lengths=200,     # total number of images to download (default = "100")
+                            file_lengths=100,     # total number of images to download (default = "100")
                             image_quality="orig", # image quality (default = "orig")
                             bookmarks="",
                             )         # next page data (default= "")
