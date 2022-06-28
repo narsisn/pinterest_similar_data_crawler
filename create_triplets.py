@@ -8,6 +8,9 @@ sim_file = pd.read_csv('csv_files/similar_images.csv')
 sim_file = sim_file.drop(sim_file[sim_file.image_list.str.count('origin')>1].index)
 # remove .gif files 
 sim_file = sim_file.drop(sim_file[sim_file.image_list.str.count('.gif')>0].index)
+#replace spaces at image path with underscore
+sim_file['image_path'] = sim_file['image_path'].apply(lambda x: x.replace(' ','_').replace('&',''))
+sim_file['main_category'] = sim_file['main_category'].apply(lambda x: x.replace(' ','_').replace('&',''))
 
 
 train_file_path = 'csv_files/train_triplet.csv'
