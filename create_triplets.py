@@ -44,12 +44,17 @@ for index, row in sim_file.iterrows():
         sim_list = [row['image_path'] + '/' + img for img in sim_list if '.png' not in img]
         # generate combinition list from sim_list generate anch and pos images 
         com_list = list(combinations(sim_list,2))
-        df_tmp = sim_file.loc[(sim_file['main_category'] != row['main_category']) & (sim_file['gender'] != row['gender']) & ('.png' not in row['image_list'])]
+        df_tmp = sim_file.loc[(sim_file['main_category'] != row['main_category']) & (sim_file['gender'] != row['gender'])]
         # generatt neg images 
         df_tmp = df_tmp.sample(len(com_list))
         df_tmp['image_list'] = df_tmp.apply(add_path, axis = 1)
         com_list = list(map(lambda x,y:  list(x) + [y], com_list,list(df_tmp['image_list'])))
         # adding labels 
+        for img in com_list:
+            size_list = [image for image in img if  os.path.exists(image)]
+            if len(size_list)<3:
+               com_list.remove(img)
+                
         com_list = list(map(lambda x:  list(x) + [row['main_category']] , com_list))
     
         # slit train test val triplets
